@@ -1,14 +1,14 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VOLT X — Cyber Fitness</title>
+
+  <title>AERO — Modern Fitness</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     *{
@@ -18,13 +18,13 @@
     }
 
     :root{
-      --orange:#ff5a00;
-      --orange2:#ff8a00;
-      --black:#080808;
-      --dark:#111;
-      --gray:#9a9a9a;
-      --white:#f5f5f5;
-      --line:rgba(255,255,255,.1);
+      --blue:#2764ff;
+      --blue-light:#eaf0ff;
+      --black:#111318;
+      --gray:#707682;
+      --light:#f6f8fc;
+      --white:#fff;
+      --border:#e5e8ef;
     }
 
     html{
@@ -32,25 +32,15 @@
     }
 
     body{
-      background:var(--black);
-      color:var(--white);
-      font-family:Inter,sans-serif;
+      background:var(--white);
+      color:var(--black);
+      font-family:"DM Sans",sans-serif;
       overflow-x:hidden;
     }
 
-    body:before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.035;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      z-index:999;
-    }
-
     a{
-      color:inherit;
       text-decoration:none;
+      color:inherit;
     }
 
     .container{
@@ -58,567 +48,608 @@
       margin:auto;
     }
 
-    /* NAVBAR */
+    /* NAV */
 
     nav{
       position:fixed;
       top:0;
-      left:0;
       width:100%;
       z-index:1000;
-      padding:22px 0;
-      background:rgba(8,8,8,.75);
-      backdrop-filter:blur(15px);
-      border-bottom:1px solid var(--line);
+      padding:18px 0;
+      background:rgba(255,255,255,.8);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(0,0,0,.05);
     }
 
     .nav-inner{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
     }
 
     .logo{
-      font-family:"Barlow Condensed",sans-serif;
-      font-size:34px;
-      font-weight:900;
+      font-family:"Space Grotesk";
+      font-weight:700;
+      font-size:26px;
       letter-spacing:-1px;
     }
 
     .logo span{
-      color:var(--orange);
+      color:var(--blue);
     }
 
     .nav-links{
       display:flex;
-      gap:34px;
+      gap:32px;
       font-size:13px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .nav-links a{
-      transition:.3s;
+      font-weight:600;
+      color:#555b66;
     }
 
     .nav-links a:hover{
-      color:var(--orange);
+      color:var(--blue);
     }
 
-    .nav-btn{
-      background:var(--orange);
+    .nav-button{
+      background:var(--black);
+      color:#fff;
       padding:13px 21px;
-      color:#000;
-      font-weight:800;
+      border-radius:30px;
       font-size:12px;
-      text-transform:uppercase;
-      clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .nav-button:hover{
+      background:var(--blue);
+      transform:translateY(-2px);
     }
 
     /* HERO */
 
     .hero{
-      min-height:100vh;
-      padding-top:120px;
-      display:flex;
-      align-items:center;
-      position:relative;
+      padding:150px 0 90px;
+      background:
+        radial-gradient(circle at 80% 30%,#dce6ff 0,transparent 27%),
+        linear-gradient(180deg,#fff,#f8faff);
       overflow:hidden;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:50px;
+      grid-template-columns:1fr .85fr;
+      gap:70px;
       align-items:center;
     }
 
-    .hero:after{
-      content:"";
-      position:absolute;
-      width:600px;
-      height:600px;
-      right:-200px;
-      top:80px;
-      background:radial-gradient(circle,rgba(255,90,0,.25),transparent 65%);
-      pointer-events:none;
-    }
-
-    .eyebrow{
+    .tag{
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      color:var(--orange);
-      font-size:12px;
+      gap:8px;
+      background:var(--blue-light);
+      color:var(--blue);
+      padding:9px 14px;
+      border-radius:30px;
+      font-size:11px;
       font-weight:800;
-      letter-spacing:3px;
+      letter-spacing:1px;
       text-transform:uppercase;
-      margin-bottom:20px;
     }
 
-    .eyebrow:before{
-      content:"";
-      width:35px;
-      height:2px;
-      background:var(--orange);
+    .tag i{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--blue);
+      box-shadow:0 0 10px rgba(39,100,255,.5);
     }
 
     h1{
-      font-family:"Barlow Condensed",sans-serif;
-      font-size:clamp(75px,10vw,150px);
-      line-height:.8;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:-4px;
+      font-family:"Space Grotesk";
+      font-size:clamp(60px,8vw,105px);
+      line-height:.88;
+      letter-spacing:-6px;
+      margin-top:24px;
     }
 
     h1 span{
-      color:var(--orange);
-      display:block;
+      color:var(--blue);
     }
 
-    .hero-text{
-      margin-top:30px;
-      color:#aaa;
-      max-width:520px;
+    .hero-description{
+      max-width:530px;
+      color:var(--gray);
+      font-size:16px;
       line-height:1.8;
-      font-size:15px;
+      margin-top:28px;
     }
 
     .hero-actions{
       display:flex;
+      align-items:center;
       gap:15px;
       margin-top:35px;
     }
 
-    .btn{
-      display:inline-block;
-      padding:17px 27px;
+    .primary-btn{
+      background:var(--blue);
+      color:#fff;
+      padding:16px 25px;
+      border-radius:12px;
+      font-weight:800;
       font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:1px;
+      box-shadow:0 15px 35px rgba(39,100,255,.22);
       transition:.3s;
     }
 
-    .btn-orange{
-      background:var(--orange);
-      color:#000;
-    }
-
-    .btn-orange:hover{
-      background:#fff;
+    .primary-btn:hover{
       transform:translateY(-4px);
+      box-shadow:0 20px 40px rgba(39,100,255,.3);
     }
 
-    .btn-outline{
-      border:1px solid #444;
+    .secondary-btn{
+      padding:16px 20px;
+      color:#555;
+      font-size:12px;
+      font-weight:700;
     }
 
-    .btn-outline:hover{
-      border-color:var(--orange);
-      color:var(--orange);
-    }
+    /* HERO DASHBOARD */
 
-    /* HERO VISUAL */
-
-    .hero-visual{
+    .hero-dashboard{
       position:relative;
-      height:560px;
+      min-height:530px;
     }
 
-    .main-card{
+    .dashboard-card{
       position:absolute;
       right:0;
-      top:25px;
-      width:390px;
-      height:500px;
-      background:
-        linear-gradient(135deg,rgba(255,90,0,.12),transparent 40%),
-        #151515;
-      border:1px solid #333;
-      transform:skewY(-4deg);
-      overflow:hidden;
-      box-shadow:25px 30px 80px rgba(0,0,0,.6);
+      top:20px;
+      width:430px;
+      background:rgba(255,255,255,.8);
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:30px;
+      padding:25px;
+      box-shadow:0 30px 80px rgba(28,46,90,.15);
+      backdrop-filter:blur(20px);
+      transform:rotate(3deg);
+      transition:.2s;
     }
 
-    .main-card:before{
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .dashboard-top small{
+      color:#8a909b;
+      font-size:10px;
+    }
+
+    .dashboard-top strong{
+      display:block;
+      font-size:17px;
+      margin-top:4px;
+    }
+
+    .avatar{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:var(--blue-light);
+      color:var(--blue);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+    }
+
+    .activity{
+      margin-top:25px;
+      background:#f5f7fb;
+      padding:20px;
+      border-radius:20px;
+    }
+
+    .activity-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:25px;
+    }
+
+    .activity-head strong{
+      font-size:14px;
+    }
+
+    .activity-head span{
+      color:var(--blue);
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .chart{
+      height:130px;
+      display:flex;
+      align-items:end;
+      gap:9px;
+    }
+
+    .chart-bar{
+      flex:1;
+      height:var(--height);
+      border-radius:8px 8px 3px 3px;
+      background:linear-gradient(to top,#2764ff,#7da0ff);
+      animation:grow 1.5s ease forwards;
+      transform-origin:bottom;
+    }
+
+    @keyframes grow{
+      from{transform:scaleY(0);}
+      to{transform:scaleY(1);}
+    }
+
+    .chart-days{
+      display:flex;
+      gap:9px;
+      margin-top:10px;
+      color:#9ca2ad;
+      font-size:9px;
+      text-align:center;
+    }
+
+    .chart-days span{
+      flex:1;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .mini-card{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:18px;
+      border-radius:18px;
+    }
+
+    .mini-card small{
+      color:#9298a3;
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .mini-card strong{
+      display:block;
+      font-family:"Space Grotesk";
+      font-size:27px;
+      margin-top:7px;
+    }
+
+    .floating-stat{
+      position:absolute;
+      left:0;
+      top:110px;
+      background:#111318;
+      color:#fff;
+      padding:20px;
+      border-radius:20px;
+      box-shadow:0 20px 45px rgba(0,0,0,.18);
+      z-index:3;
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .floating-stat small{
+      color:#999;
+      display:block;
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .floating-stat strong{
+      font-size:30px;
+      display:block;
+      margin-top:5px;
+    }
+
+    .floating-stat span{
+      color:#70e49b;
+      font-size:10px;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-15px);}
+    }
+
+    .floating-ring{
+      position:absolute;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      border:25px solid #e4eaff;
+      right:-30px;
+      bottom:10px;
+    }
+
+    .floating-ring:after{
       content:"";
       position:absolute;
-      inset:0;
-      background:
-        linear-gradient(110deg,transparent 40%,rgba(255,90,0,.18),transparent 60%);
-      animation:shine 4s infinite;
+      inset:-25px;
+      border:25px solid transparent;
+      border-top-color:var(--blue);
+      border-radius:50%;
+      transform:rotate(40deg);
     }
 
-    @keyframes shine{
-      0%,60%{transform:translateX(-100%);}
-      100%{transform:translateX(100%);}
+    /* TRUST BAR */
+
+    .trust{
+      padding:30px 0;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      background:#fff;
     }
 
-    .card-lines{
-      position:absolute;
-      inset:20px;
-      border:1px solid rgba(255,255,255,.08);
+    .trust-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:30px;
     }
 
-    .card-number{
-      position:absolute;
-      top:30px;
-      left:30px;
-      font-family:"Barlow Condensed";
-      font-size:15px;
-      color:#777;
-      letter-spacing:3px;
-    }
-
-    .card-x{
-      position:absolute;
-      right:30px;
-      top:15px;
-      font-family:"Barlow Condensed";
-      font-size:160px;
-      line-height:1;
-      color:var(--orange);
-      opacity:.9;
-      font-weight:900;
-    }
-
-    .card-info{
-      position:absolute;
-      bottom:35px;
-      left:35px;
-    }
-
-    .card-info strong{
-      display:block;
-      font-family:"Barlow Condensed";
-      font-size:52px;
-      text-transform:uppercase;
-    }
-
-    .card-info small{
-      color:#999;
-      letter-spacing:3px;
-    }
-
-    .floating-box{
-      position:absolute;
-      background:#101010;
-      border:1px solid #333;
-      padding:20px;
-      z-index:3;
-      box-shadow:15px 20px 40px rgba(0,0,0,.4);
-    }
-
-    .floating-box.one{
-      left:0;
-      top:100px;
-    }
-
-    .floating-box.two{
-      left:35px;
-      bottom:70px;
-    }
-
-    .floating-box span{
-      display:block;
-      font-size:10px;
-      color:#777;
+    .trust p{
+      color:#9aa0aa;
+      font-size:11px;
       text-transform:uppercase;
       letter-spacing:2px;
-      margin-bottom:8px;
     }
 
-    .floating-box strong{
-      font-family:"Barlow Condensed";
-      font-size:32px;
+    .trust-items{
+      display:flex;
+      gap:45px;
+      font-family:"Space Grotesk";
+      font-weight:700;
+      color:#555a64;
     }
 
-    .orange-dot{
-      display:inline-block;
-      width:8px;
-      height:8px;
-      background:var(--orange);
-      border-radius:50%;
-      margin-right:8px;
-      box-shadow:0 0 15px var(--orange);
-    }
-
-    /* MARQUEE */
-
-    .marquee{
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-      white-space:nowrap;
-      padding:18px 0;
-      background:#0d0d0d;
-    }
-
-    .marquee-track{
-      display:inline-block;
-      animation:move 20s linear infinite;
-      font-family:"Barlow Condensed";
-      font-size:25px;
-      font-weight:800;
-      text-transform:uppercase;
-    }
-
-    .marquee-track span{
-      color:var(--orange);
-      margin:0 30px;
-    }
-
-    @keyframes move{
-      from{transform:translateX(0);}
-      to{transform:translateX(-50%);}
-    }
-
-    /* SECTION */
+    /* SECTIONS */
 
     section{
       padding:110px 0;
     }
 
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
+    .section-title{
+      max-width:650px;
       margin-bottom:55px;
-      gap:30px;
     }
 
-    .section-label{
-      color:var(--orange);
-      text-transform:uppercase;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:3px;
-      margin-bottom:12px;
+    .section-title .tag{
+      margin-bottom:18px;
     }
 
     h2{
-      font-family:"Barlow Condensed";
-      font-size:70px;
-      line-height:.9;
-      text-transform:uppercase;
-      font-weight:900;
+      font-family:"Space Grotesk";
+      font-size:clamp(42px,6vw,70px);
+      line-height:.95;
+      letter-spacing:-4px;
     }
 
-    .section-desc{
-      max-width:400px;
-      color:#888;
+    .section-title p{
+      color:var(--gray);
       line-height:1.7;
-      font-size:14px;
+      margin-top:18px;
+      max-width:550px;
     }
 
-    /* PROGRAMS */
+    /* SERVICES */
 
-    .program-grid{
+    .services{
+      background:var(--light);
+    }
+
+    .service-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:2px;
+      gap:18px;
     }
 
-    .program{
-      min-height:350px;
-      padding:35px;
-      background:#111;
-      border:1px solid #222;
-      position:relative;
-      overflow:hidden;
+    .service{
+      background:#fff;
+      padding:32px;
+      border-radius:24px;
+      border:1px solid var(--border);
       transition:.4s;
     }
 
-    .program:hover{
-      background:#171717;
+    .service:hover{
       transform:translateY(-8px);
-      border-color:var(--orange);
+      box-shadow:0 25px 60px rgba(30,50,100,.1);
+      border-color:#c9d5f7;
     }
 
-    .program-number{
-      font-family:"Barlow Condensed";
-      color:#444;
-      font-size:60px;
-      font-weight:900;
+    .service-number{
+      font-size:11px;
+      color:#a1a6b0;
+      font-weight:800;
     }
 
-    .program-icon{
-      font-size:40px;
-      color:var(--orange);
-      margin:35px 0 20px;
+    .service-icon{
+      width:55px;
+      height:55px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--blue-light);
+      color:var(--blue);
+      border-radius:16px;
+      font-size:23px;
+      margin:35px 0 25px;
     }
 
-    .program h3{
-      font-family:"Barlow Condensed";
-      font-size:35px;
-      text-transform:uppercase;
+    .service h3{
+      font-family:"Space Grotesk";
+      font-size:24px;
     }
 
-    .program p{
-      color:#777;
-      font-size:13px;
+    .service p{
+      color:#858b96;
       line-height:1.7;
+      font-size:13px;
       margin-top:10px;
     }
 
-    .program-arrow{
-      position:absolute;
-      right:25px;
-      bottom:20px;
-      color:var(--orange);
-      font-size:28px;
-    }
+    /* WORKOUT */
 
-    /* DASHBOARD */
-
-    .dashboard{
-      background:#101010;
-      border:1px solid #292929;
-      padding:35px;
+    .workout-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:35px;
+      grid-template-columns:.8fr 1.2fr;
+      gap:40px;
+      align-items:center;
     }
 
-    .dash-main{
-      min-height:330px;
-      background:#151515;
-      padding:30px;
+    .progress-card{
+      background:#111318;
+      color:#fff;
+      padding:40px;
+      border-radius:30px;
       position:relative;
       overflow:hidden;
     }
 
-    .dash-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:35px;
+    .progress-card:before{
+      content:"";
+      position:absolute;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      background:var(--blue);
+      filter:blur(100px);
+      opacity:.25;
+      right:-100px;
+      top:-100px;
     }
 
-    .dash-title h3{
-      font-family:"Barlow Condensed";
-      font-size:30px;
+    .progress-card small{
+      color:#8c929e;
       text-transform:uppercase;
-    }
-
-    .live{
-      color:var(--orange);
-      font-size:10px;
-      font-weight:800;
+      font-size:9px;
       letter-spacing:2px;
     }
 
-    .bars{
-      height:180px;
+    .progress-card h3{
+      font-family:"Space Grotesk";
+      font-size:30px;
+      margin-top:8px;
+    }
+
+    .progress-ring{
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      margin:45px auto 30px;
       display:flex;
-      align-items:end;
-      gap:10px;
-    }
-
-    .bar{
-      flex:1;
-      background:linear-gradient(to top,var(--orange),#ffb067);
-      height:var(--h);
+      align-items:center;
+      justify-content:center;
+      background:conic-gradient(var(--blue) 0 78%,#272b34 78% 100%);
       position:relative;
-      animation:barPulse 2s infinite alternate;
     }
 
-    .bar:after{
+    .progress-ring:after{
       content:"";
       position:absolute;
-      left:0;
-      right:0;
-      top:0;
-      height:2px;
+      inset:17px;
+      background:#111318;
+      border-radius:50%;
+    }
+
+    .progress-number{
+      position:relative;
+      z-index:2;
+      text-align:center;
+    }
+
+    .progress-number strong{
+      display:block;
+      font-family:"Space Grotesk";
+      font-size:48px;
+    }
+
+    .progress-number span{
+      color:#8d939e;
+      font-size:10px;
+    }
+
+    .goal-list{
+      display:grid;
+      gap:15px;
+    }
+
+    .goal{
+      display:flex;
+      align-items:center;
+      gap:17px;
+      padding:22px;
+      border:1px solid var(--border);
+      border-radius:20px;
       background:#fff;
     }
 
-    @keyframes barPulse{
-      from{opacity:.65;}
-      to{opacity:1;}
-    }
-
-    .day-labels{
+    .goal-icon{
+      width:45px;
+      height:45px;
+      border-radius:14px;
+      background:var(--blue-light);
+      color:var(--blue);
       display:flex;
-      gap:10px;
-      margin-top:12px;
-      color:#555;
-      font-size:10px;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
     }
 
-    .day-labels span{
+    .goal-info{
       flex:1;
-      text-align:center;
     }
 
-    .metrics{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:2px;
-    }
-
-    .metric{
-      background:#151515;
-      padding:30px;
-      border:1px solid #202020;
-    }
-
-    .metric small{
-      color:#666;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-size:9px;
-    }
-
-    .metric strong{
+    .goal-info strong{
       display:block;
-      font-family:"Barlow Condensed";
-      font-size:48px;
-      margin-top:15px;
+      font-size:14px;
     }
 
-    .metric strong span{
-      color:var(--orange);
-      font-size:20px;
-    }
-
-    /* STATS */
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      border-top:1px solid #222;
-      border-bottom:1px solid #222;
-    }
-
-    .stat{
-      padding:40px 25px;
-      text-align:center;
-      border-right:1px solid #222;
-    }
-
-    .stat:last-child{
-      border-right:0;
-    }
-
-    .stat strong{
-      font-family:"Barlow Condensed";
-      font-size:65px;
-      color:var(--orange);
-    }
-
-    .stat span{
+    .goal-info span{
       display:block;
-      color:#777;
-      font-size:10px;
-      letter-spacing:2px;
-      text-transform:uppercase;
+      color:#9297a1;
+      font-size:11px;
+      margin-top:5px;
     }
 
-    /* PRICING */
+    .goal-progress{
+      width:80px;
+      height:6px;
+      border-radius:20px;
+      background:#e9ebef;
+      overflow:hidden;
+    }
+
+    .goal-progress i{
+      display:block;
+      height:100%;
+      width:var(--progress);
+      background:var(--blue);
+      border-radius:20px;
+    }
+
+    /* MEMBERSHIP */
+
+    .plans{
+      background:var(--light);
+    }
 
     .pricing{
       display:grid;
@@ -626,83 +657,114 @@
       gap:20px;
     }
 
-    .price-card{
-      background:#111;
-      border:1px solid #292929;
+    .plan{
+      background:#fff;
       padding:35px;
+      border-radius:28px;
+      border:1px solid var(--border);
       position:relative;
-      transition:.3s;
     }
 
-    .price-card.featured{
-      border-color:var(--orange);
-      transform:translateY(-12px);
+    .plan.featured{
+      background:var(--blue);
+      color:#fff;
+      border-color:var(--blue);
+      transform:translateY(-10px);
+      box-shadow:0 25px 60px rgba(39,100,255,.25);
     }
 
     .popular{
       position:absolute;
-      top:0;
-      right:0;
-      background:var(--orange);
-      color:#000;
-      padding:9px 16px;
-      font-size:9px;
-      font-weight:900;
-      text-transform:uppercase;
-    }
-
-    .price-card h3{
-      font-family:"Barlow Condensed";
-      font-size:32px;
-      text-transform:uppercase;
-    }
-
-    .price{
-      font-family:"Barlow Condensed";
-      font-size:65px;
-      font-weight:900;
-      margin:25px 0;
-    }
-
-    .price span{
-      font-family:Inter;
-      font-size:12px;
-      color:#666;
-    }
-
-    .price-card ul{
-      list-style:none;
-      border-top:1px solid #222;
-      padding-top:20px;
-    }
-
-    .price-card li{
-      padding:10px 0;
-      color:#888;
-      font-size:13px;
-    }
-
-    .price-card li:before{
-      content:"✓";
-      color:var(--orange);
-      margin-right:10px;
-    }
-
-    .price-btn{
-      display:block;
-      margin-top:30px;
-      text-align:center;
-      border:1px solid #333;
-      padding:14px;
-      font-size:11px;
+      top:18px;
+      right:18px;
+      background:#fff;
+      color:var(--blue);
+      padding:7px 11px;
+      border-radius:20px;
+      font-size:8px;
       font-weight:800;
       text-transform:uppercase;
     }
 
-    .featured .price-btn{
-      background:var(--orange);
-      color:#000;
-      border-color:var(--orange);
+    .plan h3{
+      font-family:"Space Grotesk";
+      font-size:24px;
+    }
+
+    .plan-description{
+      color:#8b919b;
+      font-size:12px;
+      margin-top:8px;
+    }
+
+    .featured .plan-description{
+      color:#d7e1ff;
+    }
+
+    .price{
+      font-family:"Space Grotesk";
+      font-size:55px;
+      font-weight:700;
+      margin:25px 0;
+    }
+
+    .price span{
+      font-family:"DM Sans";
+      font-size:11px;
+      color:#999;
+      font-weight:400;
+    }
+
+    .featured .price span{
+      color:#d5dfff;
+    }
+
+    .plan ul{
+      list-style:none;
+      border-top:1px solid var(--border);
+      padding-top:15px;
+    }
+
+    .featured ul{
+      border-color:rgba(255,255,255,.2);
+    }
+
+    .plan li{
+      padding:9px 0;
+      color:#727782;
+      font-size:12px;
+    }
+
+    .featured li{
+      color:#e0e7ff;
+    }
+
+    .plan li:before{
+      content:"✓";
+      color:var(--blue);
+      font-weight:900;
+      margin-right:9px;
+    }
+
+    .featured li:before{
+      color:#fff;
+    }
+
+    .plan-btn{
+      display:block;
+      text-align:center;
+      margin-top:25px;
+      padding:14px;
+      border-radius:12px;
+      background:#111318;
+      color:#fff;
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .featured .plan-btn{
+      background:#fff;
+      color:var(--blue);
     }
 
     /* TRAINERS */
@@ -714,152 +776,158 @@
     }
 
     .trainer{
-      background:#111;
-      min-height:390px;
-      padding:25px;
-      border:1px solid #222;
-      position:relative;
+      border-radius:25px;
       overflow:hidden;
+      background:#f2f4f8;
+      border:1px solid var(--border);
     }
 
-    .trainer:before{
-      content:"";
-      position:absolute;
-      width:170px;
-      height:170px;
-      background:var(--orange);
-      border-radius:50%;
-      filter:blur(80px);
-      opacity:.15;
-      right:-50px;
-      top:-50px;
-    }
-
-    .trainer-avatar{
-      height:230px;
+    .trainer-photo{
+      height:300px;
       background:
-        linear-gradient(135deg,#222,#0d0d0d);
+        radial-gradient(circle at 50% 30%,#cbd7f5,transparent 30%),
+        linear-gradient(145deg,#dfe5f0,#f7f8fa);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-family:"Barlow Condensed";
-      font-size:100px;
-      font-weight:900;
-      color:#333;
+      font-family:"Space Grotesk";
+      font-size:75px;
+      font-weight:700;
+      color:#b8c2d8;
     }
 
-    .trainer h3{
-      font-family:"Barlow Condensed";
-      font-size:30px;
-      text-transform:uppercase;
-      margin-top:20px;
+    .trainer-info{
+      padding:23px;
+      background:#fff;
     }
 
-    .trainer p{
-      color:var(--orange);
+    .trainer-info h3{
+      font-family:"Space Grotesk";
+      font-size:20px;
+    }
+
+    .trainer-info p{
+      color:var(--blue);
       font-size:10px;
-      letter-spacing:2px;
       text-transform:uppercase;
+      letter-spacing:1px;
       margin-top:5px;
     }
 
     /* CTA */
 
     .cta{
-      background:var(--orange);
-      color:#000;
-      padding:80px;
+      background:var(--black);
+      color:#fff;
+      border-radius:35px;
+      padding:75px;
       position:relative;
       overflow:hidden;
     }
 
-    .cta:after{
-      content:"X";
+    .cta:before{
+      content:"";
       position:absolute;
-      right:30px;
-      top:-90px;
-      font-family:"Barlow Condensed";
-      font-size:400px;
-      font-weight:900;
-      opacity:.08;
+      width:450px;
+      height:450px;
+      right:-150px;
+      top:-200px;
+      border-radius:50%;
+      background:var(--blue);
+      filter:blur(120px);
+      opacity:.5;
     }
 
     .cta h2{
-      font-size:90px;
       max-width:700px;
+      position:relative;
+    }
+
+    .cta h2 span{
+      color:#7194ff;
     }
 
     .cta p{
+      color:#9297a2;
       max-width:520px;
-      margin:20px 0 30px;
       line-height:1.7;
-      color:#222;
-    }
-
-    .black-btn{
-      background:#000;
-      color:#fff;
-      display:inline-block;
-      padding:16px 28px;
-      font-size:11px;
-      font-weight:900;
-      text-transform:uppercase;
+      margin:20px 0 30px;
+      position:relative;
     }
 
     /* CONTACT */
 
-    .contact{
+    .contact-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:60px;
+      gap:50px;
     }
 
     .contact-info h2{
-      margin-bottom:25px;
+      margin-bottom:20px;
     }
 
-    .contact-info p{
-      color:#777;
+    .contact-info>p{
+      color:#858b96;
       line-height:1.8;
-      max-width:450px;
+      max-width:470px;
     }
 
-    .contact-detail{
+    .details{
       margin-top:30px;
     }
 
-    .contact-detail div{
-      padding:16px 0;
-      border-bottom:1px solid #222;
-      color:#999;
-      font-size:13px;
+    .detail{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      padding:15px 0;
+      border-bottom:1px solid var(--border);
     }
 
-    .contact-detail strong{
-      color:#fff;
-      display:inline-block;
-      width:100px;
+    .detail-icon{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      background:var(--blue-light);
+      color:var(--blue);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .detail strong{
+      display:block;
+      font-size:12px;
+    }
+
+    .detail span{
+      color:#858b96;
+      font-size:11px;
     }
 
     form{
-      background:#111;
-      padding:35px;
-      border:1px solid #222;
+      background:var(--light);
+      border:1px solid var(--border);
+      padding:30px;
+      border-radius:28px;
     }
 
     input,textarea{
       width:100%;
-      background:#0b0b0b;
-      border:1px solid #292929;
-      color:#fff;
+      border:1px solid var(--border);
+      background:#fff;
       padding:16px;
+      border-radius:12px;
       margin-bottom:12px;
       outline:none;
-      font-family:Inter;
+      font-family:inherit;
+      font-size:13px;
     }
 
     input:focus,textarea:focus{
-      border-color:var(--orange);
+      border-color:var(--blue);
+      box-shadow:0 0 0 4px var(--blue-light);
     }
 
     textarea{
@@ -869,23 +937,22 @@
 
     form button{
       width:100%;
+      padding:16px;
       border:0;
-      padding:17px;
-      background:var(--orange);
-      font-weight:900;
-      text-transform:uppercase;
+      border-radius:12px;
+      background:var(--blue);
+      color:#fff;
+      font-weight:800;
       cursor:pointer;
     }
 
     /* FOOTER */
 
     footer{
-      padding:35px 0;
-      border-top:1px solid #222;
-      color:#555;
+      padding:30px 0;
+      border-top:1px solid var(--border);
+      color:#8d929b;
       font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:1px;
     }
 
     .footer-inner{
@@ -897,7 +964,7 @@
 
     .reveal{
       opacity:0;
-      transform:translateY(35px);
+      transform:translateY(30px);
       transition:1s ease;
     }
 
@@ -908,128 +975,102 @@
 
     /* RESPONSIVE */
 
-    @media(max-width:900px){
+    @media(max-width:950px){
 
       .nav-links{
         display:none;
       }
 
       .hero-grid,
-      .contact,
-      .dashboard{
+      .workout-grid,
+      .contact-grid{
         grid-template-columns:1fr;
       }
 
-      .hero{
-        padding-top:130px;
+      .hero-dashboard{
+        max-width:600px;
+        width:100%;
+        margin:auto;
       }
 
-      .hero-visual{
-        height:500px;
-      }
-
-      .program-grid,
+      .service-grid,
       .pricing,
       .trainer-grid{
         grid-template-columns:1fr;
       }
 
-      .price-card.featured{
+      .plan.featured{
         transform:none;
       }
 
-      .stats{
-        grid-template-columns:1fr 1fr;
+      .trust-inner{
+        display:block;
+        text-align:center;
       }
 
-      .stat:nth-child(2){
-        border-right:0;
-      }
-
-      .stat:nth-child(-n+2){
-        border-bottom:1px solid #222;
-      }
-
-      h2{
-        font-size:55px;
-      }
-
-      .cta{
-        padding:50px 30px;
-      }
-
-      .cta h2{
-        font-size:65px;
+      .trust-items{
+        justify-content:center;
+        margin-top:20px;
+        flex-wrap:wrap;
       }
     }
 
     @media(max-width:600px){
 
-      .logo{
-        font-size:28px;
-      }
-
-      .nav-btn{
-        padding:10px 14px;
+      .hero{
+        padding-top:125px;
       }
 
       h1{
-        font-size:76px;
+        font-size:65px;
+        letter-spacing:-4px;
+      }
+
+      .hero-actions{
+        flex-wrap:wrap;
+      }
+
+      .hero-dashboard{
+        min-height:430px;
+      }
+
+      .dashboard-card{
+        width:90%;
+        right:0;
+      }
+
+      .floating-stat{
+        left:-5px;
+        top:90px;
+      }
+
+      .floating-ring{
+        width:120px;
+        height:120px;
+        border-width:18px;
+        right:-10px;
+      }
+
+      .floating-ring:after{
+        inset:-18px;
+        border-width:18px;
+      }
+
+      .trust-items{
+        gap:20px;
+      }
+
+      section{
+        padding:80px 0;
+      }
+
+      h2{
         letter-spacing:-2px;
       }
 
-      .hero-visual{
-        height:420px;
-      }
-
-      .main-card{
-        width:280px;
-        height:370px;
-      }
-
-      .card-x{
-        font-size:110px;
-      }
-
-      .floating-box{
-        padding:14px;
-      }
-
-      .floating-box.one{
-        top:60px;
-      }
-
-      .floating-box.two{
-        bottom:30px;
-      }
-
-      .section-head{
-        display:block;
-      }
-
-      .section-desc{
-        margin-top:20px;
-      }
-
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      .stat{
-        border-right:0;
-        border-bottom:1px solid #222;
-      }
-
-      .stat:last-child{
-        border-bottom:0;
-      }
-
-      .metrics{
-        grid-template-columns:1fr;
-      }
-
-      .cta h2{
-        font-size:50px;
+      .cta{
+        padding:45px 25px;
+        border-radius:25px;
       }
 
       .footer-inner{
@@ -1048,477 +1089,741 @@
   <!-- NAVIGATION -->
   <nav>
     <div class="container nav-inner">
-      <a href="#" class="logo">VOLT<span>X</span></a>
+
+      <a href="#" class="logo">AERO<span>.</span></a>
 
       <div class="nav-links">
-        <a href="#programs">Programs</a>
-        <a href="#performance">Performance</a>
-        <a href="#plans">Plans</a>
-        <a href="#trainers">Trainers</a>
+        <a href="#services">Programs</a>
+        <a href="#progress">Progress</a>
+        <a href="#membership">Membership</a>
+        <a href="#trainers">Coaches</a>
       </div>
 
-      <a href="#contact" class="nav-btn">Join Now</a>
+      <a href="#contact" class="nav-button">Get Started</a>
+
     </div>
   </nav>
 
+
   <!-- HERO -->
   <header class="hero">
+
     <div class="container hero-grid">
 
       <div class="hero-content reveal">
-        <div class="eyebrow">Future Of Training</div>
+
+        <div class="tag">
+          <i></i>
+          Next Generation Fitness
+        </div>
 
         <h1>
-          BUILD
-          <span>POWER.</span>
+          TRAIN
+          <span>SMARTER.</span>
         </h1>
 
-        <p class="hero-text">
-          VOLT X is a high-performance training facility built for people
-          who refuse average. Train harder, move faster and become stronger.
+        <p class="hero-description">
+          A modern fitness experience combining expert coaching,
+          intelligent tracking and powerful workouts to help you
+          become your strongest self.
         </p>
 
         <div class="hero-actions">
-          <a href="#plans" class="btn btn-orange">Start Training</a>
-          <a href="#programs" class="btn btn-outline">Explore Programs</a>
+          <a href="#membership" class="primary-btn">
+            Start Training →
+          </a>
+
+          <a href="#services" class="secondary-btn">
+            Explore Programs
+          </a>
         </div>
+
       </div>
 
-      <div class="hero-visual reveal">
 
-        <div class="floating-box one">
-          <span>Live Status</span>
-          <strong><i class="orange-dot"></i>ACTIVE</strong>
+      <div class="hero-dashboard reveal">
+
+        <div class="floating-stat">
+          <small>Today's Burn</small>
+          <strong>742</strong>
+          <span>+18% this week</span>
         </div>
 
-        <div class="main-card" id="heroCard">
-          <div class="card-lines"></div>
-          <div class="card-number">VX / 001</div>
-          <div class="card-x">X</div>
+        <div class="dashboard-card" id="dashboard">
 
-          <div class="card-info">
-            <strong>NO LIMITS</strong>
-            <small>PERFORMANCE DIVISION</small>
+          <div class="dashboard-top">
+            <div>
+              <small>Welcome Back</small>
+              <strong>Your Activity</strong>
+            </div>
+
+            <div class="avatar">A</div>
           </div>
+
+          <div class="activity">
+
+            <div class="activity-head">
+              <strong>Weekly Activity</strong>
+              <span>+24.8%</span>
+            </div>
+
+            <div class="chart">
+              <div class="chart-bar" style="--height:45%"></div>
+              <div class="chart-bar" style="--height:65%"></div>
+              <div class="chart-bar" style="--height:52%"></div>
+              <div class="chart-bar" style="--height:80%"></div>
+              <div class="chart-bar" style="--height:62%"></div>
+              <div class="chart-bar" style="--height:92%"></div>
+              <div class="chart-bar" style="--height:74%"></div>
+            </div>
+
+            <div class="chart-days">
+              <span>M</span>
+              <span>T</span>
+              <span>W</span>
+              <span>T</span>
+              <span>F</span>
+              <span>S</span>
+              <span>S</span>
+            </div>
+
+          </div>
+
+          <div class="mini-grid">
+
+            <div class="mini-card">
+              <small>Workouts</small>
+              <strong>18</strong>
+            </div>
+
+            <div class="mini-card">
+              <small>Calories</small>
+              <strong>8.4K</strong>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="floating-box two">
-          <span>Members Online</span>
-          <strong>247+</strong>
-        </div>
+        <div class="floating-ring"></div>
 
       </div>
 
     </div>
+
   </header>
 
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-track">
-      STRENGTH <span>✦</span>
-      SPEED <span>✦</span>
-      POWER <span>✦</span>
-      CONDITIONING <span>✦</span>
-      PERFORMANCE <span>✦</span>
-      STRENGTH <span>✦</span>
-      SPEED <span>✦</span>
-      POWER <span>✦</span>
-      CONDITIONING <span>✦</span>
-      PERFORMANCE <span>✦</span>
+
+  <!-- TRUST -->
+  <div class="trust">
+
+    <div class="container trust-inner">
+
+      <p>Trusted by 10,000+ members</p>
+
+      <div class="trust-items">
+        <span>ATHLETE+</span>
+        <span>FITLAB</span>
+        <span>MOVE</span>
+        <span>CORE</span>
+      </div>
+
     </div>
+
   </div>
 
-  <!-- PROGRAMS -->
-  <section id="programs">
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+
     <div class="container">
 
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">01 / Training</div>
-          <h2>Choose Your<br>Weapon</h2>
+      <div class="section-title reveal">
+
+        <div class="tag">
+          01 / Programs
         </div>
 
-        <p class="section-desc">
-          Structured programs designed around real performance,
-          progressive overload and measurable results.
+        <h2>Everything You Need To Move Better.</h2>
+
+        <p>
+          From strength to conditioning, every program is built
+          around progress, consistency and better movement.
         </p>
-      </div>
-
-      <div class="program-grid">
-
-        <div class="program reveal">
-          <div class="program-number">01</div>
-          <div class="program-icon">↗</div>
-          <h3>Strength</h3>
-          <p>
-            Build raw power with progressive resistance training,
-            compound movements and expert coaching.
-          </p>
-          <div class="program-arrow">→</div>
-        </div>
-
-        <div class="program reveal">
-          <div class="program-number">02</div>
-          <div class="program-icon">◉</div>
-          <h3>Conditioning</h3>
-          <p>
-            Push your cardiovascular limits with high-intensity
-            conditioning and metabolic workouts.
-          </p>
-          <div class="program-arrow">→</div>
-        </div>
-
-        <div class="program reveal">
-          <div class="program-number">03</div>
-          <div class="program-icon">△</div>
-          <h3>Athletic</h3>
-          <p>
-            Develop speed, agility, explosive movement and
-            functional athletic performance.
-          </p>
-          <div class="program-arrow">→</div>
-        </div>
 
       </div>
+
+
+      <div class="service-grid">
+
+        <div class="service reveal">
+          <div class="service-number">01</div>
+
+          <div class="service-icon">↗</div>
+
+          <h3>Strength Lab</h3>
+
+          <p>
+            Progressive strength training designed to increase
+            power, muscle and overall performance.
+          </p>
+        </div>
+
+
+        <div class="service reveal">
+          <div class="service-number">02</div>
+
+          <div class="service-icon">◉</div>
+
+          <h3>HIIT Studio</h3>
+
+          <p>
+            Fast-paced workouts designed to challenge your
+            cardiovascular fitness and endurance.
+          </p>
+        </div>
+
+
+        <div class="service reveal">
+          <div class="service-number">03</div>
+
+          <div class="service-icon">△</div>
+
+          <h3>Mobility</h3>
+
+          <p>
+            Improve flexibility, stability and movement quality
+            with guided mobility sessions.
+          </p>
+        </div>
+
+      </div>
+
     </div>
+
   </section>
 
-  <!-- PERFORMANCE DASHBOARD -->
-  <section id="performance">
+
+  <!-- PROGRESS -->
+  <section id="progress">
+
     <div class="container">
 
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">02 / Analytics</div>
-          <h2>Track The<br>Work.</h2>
+      <div class="section-title reveal">
+
+        <div class="tag">
+          02 / Progress
         </div>
 
-        <p class="section-desc">
-          Your progress should never be a guess. Track workouts,
-          strength levels and performance metrics every week.
+        <h2>Make Every Workout Count.</h2>
+
+        <p>
+          Your fitness journey becomes easier when you can
+          actually see your progress.
         </p>
+
       </div>
 
-      <div class="dashboard reveal">
 
-        <div class="dash-main">
-          <div class="dash-title">
-            <h3>Weekly Output</h3>
-            <span class="live">● LIVE DATA</span>
+      <div class="workout-grid">
+
+        <div class="progress-card reveal">
+
+          <small>Weekly Goal</small>
+
+          <h3>Performance Score</h3>
+
+          <div class="progress-ring">
+
+            <div class="progress-number">
+              <strong>78%</strong>
+              <span>COMPLETED</span>
+            </div>
+
           </div>
 
-          <div class="bars">
-            <div class="bar" style="--h:45%"></div>
-            <div class="bar" style="--h:65%"></div>
-            <div class="bar" style="--h:55%"></div>
-            <div class="bar" style="--h:85%"></div>
-            <div class="bar" style="--h:72%"></div>
-            <div class="bar" style="--h:95%"></div>
-            <div class="bar" style="--h:62%"></div>
-          </div>
-
-          <div class="day-labels">
-            <span>M</span>
-            <span>T</span>
-            <span>W</span>
-            <span>T</span>
-            <span>F</span>
-            <span>S</span>
-            <span>S</span>
-          </div>
-        </div>
-
-        <div class="metrics">
-
-          <div class="metric">
-            <small>Calories</small>
-            <strong>684 <span>KC</span></strong>
-          </div>
-
-          <div class="metric">
-            <small>Workout</small>
-            <strong>76 <span>MIN</span></strong>
-          </div>
-
-          <div class="metric">
-            <small>Volume</small>
-            <strong>8.4 <span>K</span></strong>
-          </div>
-
-          <div class="metric">
-            <small>Intensity</small>
-            <strong>92 <span>%</span></strong>
+          <div style="text-align:center;color:#8d939e;font-size:11px;">
+            5 of 7 weekly sessions completed
           </div>
 
         </div>
 
+
+        <div class="goal-list">
+
+          <div class="goal reveal">
+
+            <div class="goal-icon">01</div>
+
+            <div class="goal-info">
+              <strong>Strength</strong>
+              <span>4 / 5 sessions</span>
+            </div>
+
+            <div class="goal-progress">
+              <i style="--progress:80%"></i>
+            </div>
+
+          </div>
+
+
+          <div class="goal reveal">
+
+            <div class="goal-icon">02</div>
+
+            <div class="goal-info">
+              <strong>Cardio</strong>
+              <span>3 / 4 sessions</span>
+            </div>
+
+            <div class="goal-progress">
+              <i style="--progress:75%"></i>
+            </div>
+
+          </div>
+
+
+          <div class="goal reveal">
+
+            <div class="goal-icon">03</div>
+
+            <div class="goal-info">
+              <strong>Mobility</strong>
+              <span>5 / 5 sessions</span>
+            </div>
+
+            <div class="goal-progress">
+              <i style="--progress:100%"></i>
+            </div>
+
+          </div>
+
+
+          <div class="goal reveal">
+
+            <div class="goal-icon">04</div>
+
+            <div class="goal-info">
+              <strong>Recovery</strong>
+              <span>6 / 7 days</span>
+            </div>
+
+            <div class="goal-progress">
+              <i style="--progress:86%"></i>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- STATS -->
-  <section>
-    <div class="container">
-      <div class="stats reveal">
 
-        <div class="stat">
-          <strong>12K</strong>
-          <span>Members Trained</span>
-        </div>
+  <!-- MEMBERSHIP -->
+  <section id="membership" class="plans">
 
-        <div class="stat">
-          <strong>48</strong>
-          <span>Weekly Classes</span>
-        </div>
-
-        <div class="stat">
-          <strong>26</strong>
-          <span>Expert Coaches</span>
-        </div>
-
-        <div class="stat">
-          <strong>24/7</strong>
-          <span>Gym Access</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="plans">
     <div class="container">
 
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">03 / Membership</div>
-          <h2>Pick Your<br>Level</h2>
+      <div class="section-title reveal">
+
+        <div class="tag">
+          03 / Membership
         </div>
+
+        <h2>Choose Your Pace.</h2>
+
+        <p>
+          Flexible memberships for beginners, regular athletes
+          and people ready to go all in.
+        </p>
+
       </div>
+
 
       <div class="pricing">
 
-        <div class="price-card reveal">
-          <h3>Core</h3>
-          <div class="price">$39 <span>/ month</span></div>
+        <div class="plan reveal">
+
+          <h3>Starter</h3>
+
+          <p class="plan-description">
+            For building your routine.
+          </p>
+
+          <div class="price">
+            $29 <span>/ month</span>
+          </div>
 
           <ul>
-            <li>24/7 Gym Access</li>
-            <li>Strength Equipment</li>
+            <li>Gym Access</li>
+            <li>Basic Equipment</li>
+            <li>Workout Library</li>
             <li>Locker Access</li>
-            <li>Workout App</li>
           </ul>
 
-          <a href="#contact" class="price-btn">Choose Core</a>
+          <a href="#contact" class="plan-btn">
+            Get Started
+          </a>
+
         </div>
 
-        <div class="price-card featured reveal">
-          <div class="popular">Most Popular</div>
 
-          <h3>Power</h3>
-          <div class="price">$69 <span>/ month</span></div>
+        <div class="plan featured reveal">
+
+          <div class="popular">Popular</div>
+
+          <h3>Performance</h3>
+
+          <p class="plan-description">
+            For serious progress.
+          </p>
+
+          <div class="price">
+            $59 <span>/ month</span>
+          </div>
 
           <ul>
-            <li>Everything In Core</li>
-            <li>Unlimited Classes</li>
-            <li>Performance Tracking</li>
+            <li>Unlimited Gym Access</li>
+            <li>All Group Classes</li>
+            <li>Progress Tracking</li>
             <li>Monthly Coach Review</li>
           </ul>
 
-          <a href="#contact" class="price-btn">Choose Power</a>
+          <a href="#contact" class="plan-btn">
+            Choose Performance
+          </a>
+
         </div>
 
-        <div class="price-card reveal">
+
+        <div class="plan reveal">
+
           <h3>Elite</h3>
-          <div class="price">$119 <span>/ month</span></div>
+
+          <p class="plan-description">
+            For maximum results.
+          </p>
+
+          <div class="price">
+            $99 <span>/ month</span>
+          </div>
 
           <ul>
-            <li>Everything In Power</li>
+            <li>Everything In Performance</li>
             <li>Personal Training</li>
-            <li>Nutrition Guidance</li>
+            <li>Nutrition Coaching</li>
             <li>Priority Booking</li>
           </ul>
 
-          <a href="#contact" class="price-btn">Choose Elite</a>
+          <a href="#contact" class="plan-btn">
+            Go Elite
+          </a>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
+
 
   <!-- TRAINERS -->
   <section id="trainers">
+
     <div class="container">
 
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">04 / Coaches</div>
-          <h2>Built By<br>Experts</h2>
+      <div class="section-title reveal">
+
+        <div class="tag">
+          04 / Coaches
         </div>
 
-        <p class="section-desc">
-          No random routines. Our coaches combine experience,
-          science and serious training methodology.
+        <h2>Meet Your Coaches.</h2>
+
+        <p>
+          Experienced coaches who care about your technique,
+          progress and long-term results.
         </p>
+
       </div>
+
 
       <div class="trainer-grid">
 
         <div class="trainer reveal">
-          <div class="trainer-avatar">JD</div>
-          <h3>Jordan Davis</h3>
-          <p>Strength Coach</p>
+
+          <div class="trainer-photo">
+            JD
+          </div>
+
+          <div class="trainer-info">
+            <h3>Jordan Davis</h3>
+            <p>Strength Specialist</p>
+          </div>
+
         </div>
 
-        <div class="trainer reveal">
-          <div class="trainer-avatar">MK</div>
-          <h3>Maya Khan</h3>
-          <p>Performance Coach</p>
-        </div>
 
         <div class="trainer reveal">
-          <div class="trainer-avatar">RS</div>
-          <h3>Ryan Stone</h3>
-          <p>Conditioning Coach</p>
+
+          <div class="trainer-photo">
+            MK
+          </div>
+
+          <div class="trainer-info">
+            <h3>Maya Khan</h3>
+            <p>Performance Coach</p>
+          </div>
+
+        </div>
+
+
+        <div class="trainer reveal">
+
+          <div class="trainer-photo">
+            RS
+          </div>
+
+          <div class="trainer-info">
+            <h3>Ryan Stone</h3>
+            <p>Mobility Coach</p>
+          </div>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
+
 
   <!-- CTA -->
   <section>
+
     <div class="container">
+
       <div class="cta reveal">
-        <h2>YOUR EXCUSES END HERE.</h2>
+
+        <h2>
+          YOUR NEXT
+          <span>LEVEL</span>
+          STARTS NOW.
+        </h2>
 
         <p>
-          Stop waiting for motivation. Build discipline,
-          train with purpose and become the strongest version
-          of yourself.
+          One membership. Expert coaching. Smarter training.
+          Everything you need to build a stronger body and a
+          better routine.
         </p>
 
-        <a href="#contact" class="black-btn">Start Your Journey →</a>
+        <a href="#contact" class="primary-btn">
+          Book A Free Tour →
+        </a>
+
       </div>
+
     </div>
+
   </section>
+
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="container contact">
+
+    <div class="container contact-grid">
 
       <div class="contact-info reveal">
-        <div class="section-label">05 / Contact</div>
-        <h2>Let's Get<br>To Work.</h2>
+
+        <div class="tag">
+          05 / Contact
+        </div>
+
+        <h2>Let's Start.</h2>
 
         <p>
-          Ready to start? Send us your details and our team
-          will contact you with membership options and a free
-          gym tour.
+          Come see the space, meet the team and find the
+          membership that fits your goals.
         </p>
 
-        <div class="contact-detail">
-          <div>
-            <strong>Location</strong>
-            88 Power Street, Downtown
+
+        <div class="details">
+
+          <div class="detail">
+
+            <div class="detail-icon">⌖</div>
+
+            <div>
+              <strong>Location</strong>
+              <span>88 Fitness Avenue, Downtown</span>
+            </div>
+
           </div>
 
-          <div>
-            <strong>Phone</strong>
-            +1 555 204 8899
+
+          <div class="detail">
+
+            <div class="detail-icon">✆</div>
+
+            <div>
+              <strong>Phone</strong>
+              <span>+1 555 203 8899</span>
+            </div>
+
           </div>
 
-          <div>
-            <strong>Email</strong>
-            hello@voltxgym.com
+
+          <div class="detail">
+
+            <div class="detail-icon">@</div>
+
+            <div>
+              <strong>Email</strong>
+              <span>hello@aerofitness.com</span>
+            </div>
+
           </div>
 
-          <div>
-            <strong>Hours</strong>
-            Open 24 Hours
+
+          <div class="detail">
+
+            <div class="detail-icon">◷</div>
+
+            <div>
+              <strong>Opening Hours</strong>
+              <span>Open 24 Hours</span>
+            </div>
+
           </div>
+
         </div>
+
       </div>
+
 
       <form id="contactForm" class="reveal">
 
-        <input type="text" placeholder="Your Name" required>
+        <input
+          type="text"
+          placeholder="Full Name"
+          required
+        >
 
-        <input type="email" placeholder="Email Address" required>
+        <input
+          type="email"
+          placeholder="Email Address"
+          required
+        >
 
-        <input type="tel" placeholder="Phone Number">
+        <input
+          type="tel"
+          placeholder="Phone Number"
+        >
 
-        <textarea placeholder="Tell us about your fitness goal"></textarea>
+        <textarea
+          placeholder="What is your fitness goal?"
+        ></textarea>
 
-        <button type="submit">Request Free Tour →</button>
+        <button type="submit">
+          Request Free Tour →
+        </button>
 
       </form>
 
     </div>
+
   </section>
+
 
   <!-- FOOTER -->
   <footer>
+
     <div class="container footer-inner">
-      <div>© 2026 VOLT X FITNESS</div>
-      <div>Train Hard. Stay Dangerous.</div>
+
+      <div>
+        © 2026 AERO FITNESS
+      </div>
+
+      <div>
+        MOVE BETTER. LIVE STRONGER.
+      </div>
+
     </div>
+
   </footer>
+
 
   <script>
 
-    /* HERO 3D MOVEMENT */
+    /* DASHBOARD PARALLAX */
 
-    const heroCard = document.getElementById("heroCard");
+    const dashboard =
+      document.getElementById("dashboard");
 
-    document.addEventListener("mousemove", e => {
+    document.addEventListener("mousemove", function(e){
 
       if(window.innerWidth < 900) return;
 
-      const x = (window.innerWidth / 2 - e.clientX) / 45;
-      const y = (window.innerHeight / 2 - e.clientY) / 45;
+      const x =
+        (window.innerWidth / 2 - e.clientX) / 60;
 
-      heroCard.style.transform =
-        `skewY(-4deg) rotateY(${x}deg) rotateX(${y}deg)`;
+      const y =
+        (window.innerHeight / 2 - e.clientY) / 60;
+
+      dashboard.style.transform =
+        `rotate(3deg) rotateY(${x}deg) rotateX(${y}deg)`;
+
     });
 
 
     /* SCROLL REVEAL */
 
-    const reveals = document.querySelectorAll(".reveal");
+    const revealElements =
+      document.querySelectorAll(".reveal");
 
-    const revealObserver = new IntersectionObserver(entries => {
+    const observer =
+      new IntersectionObserver((entries) => {
 
-      entries.forEach(entry => {
+        entries.forEach(entry => {
 
-        if(entry.isIntersecting){
-          entry.target.classList.add("active");
-        }
+          if(entry.isIntersecting){
 
+            entry.target.classList.add("active");
+
+          }
+
+        });
+
+      }, {
+        threshold:.12
       });
 
-    },{
-      threshold:.12
-    });
 
-    reveals.forEach(item => {
-      revealObserver.observe(item);
+    revealElements.forEach(element => {
+      observer.observe(element);
     });
 
 
     /* CONTACT FORM */
 
-    document.getElementById("contactForm").addEventListener("submit", function(e){
+    document
+      .getElementById("contactForm")
+      .addEventListener("submit", function(e){
 
-      e.preventDefault();
+        e.preventDefault();
 
-      alert(
-        "Thanks for contacting VOLT X! Our team will get back to you shortly."
-      );
+        alert(
+          "Thanks! Your AERO fitness tour request has been received."
+        );
 
-      this.reset();
+        this.reset();
 
-    });
+      });
 
   </script>
 
