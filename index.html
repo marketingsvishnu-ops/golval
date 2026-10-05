@@ -1,1832 +1,465 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>AERO — Modern Fitness</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    :root{
-      --blue:#2764ff;
-      --blue-light:#eaf0ff;
-      --black:#111318;
-      --gray:#707682;
-      --light:#f6f8fc;
-      --white:#fff;
-      --border:#e5e8ef;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:var(--white);
-      color:var(--black);
-      font-family:"DM Sans",sans-serif;
-      overflow-x:hidden;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .container{
-      width:min(1180px,92%);
-      margin:auto;
-    }
-
-    /* NAV */
-
-    nav{
-      position:fixed;
-      top:0;
-      width:100%;
-      z-index:1000;
-      padding:18px 0;
-      background:rgba(255,255,255,.8);
-      backdrop-filter:blur(20px);
-      border-bottom:1px solid rgba(0,0,0,.05);
-    }
-
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .logo{
-      font-family:"Space Grotesk";
-      font-weight:700;
-      font-size:26px;
-      letter-spacing:-1px;
-    }
-
-    .logo span{
-      color:var(--blue);
-    }
-
-    .nav-links{
-      display:flex;
-      gap:32px;
-      font-size:13px;
-      font-weight:600;
-      color:#555b66;
-    }
-
-    .nav-links a:hover{
-      color:var(--blue);
-    }
-
-    .nav-button{
-      background:var(--black);
-      color:#fff;
-      padding:13px 21px;
-      border-radius:30px;
-      font-size:12px;
-      font-weight:700;
-      transition:.3s;
-    }
-
-    .nav-button:hover{
-      background:var(--blue);
-      transform:translateY(-2px);
-    }
-
-    /* HERO */
-
-    .hero{
-      padding:150px 0 90px;
-      background:
-        radial-gradient(circle at 80% 30%,#dce6ff 0,transparent 27%),
-        linear-gradient(180deg,#fff,#f8faff);
-      overflow:hidden;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1fr .85fr;
-      gap:70px;
-      align-items:center;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:var(--blue-light);
-      color:var(--blue);
-      padding:9px 14px;
-      border-radius:30px;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:1px;
-      text-transform:uppercase;
-    }
-
-    .tag i{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:var(--blue);
-      box-shadow:0 0 10px rgba(39,100,255,.5);
-    }
-
-    h1{
-      font-family:"Space Grotesk";
-      font-size:clamp(60px,8vw,105px);
-      line-height:.88;
-      letter-spacing:-6px;
-      margin-top:24px;
-    }
-
-    h1 span{
-      color:var(--blue);
-    }
-
-    .hero-description{
-      max-width:530px;
-      color:var(--gray);
-      font-size:16px;
-      line-height:1.8;
-      margin-top:28px;
-    }
-
-    .hero-actions{
-      display:flex;
-      align-items:center;
-      gap:15px;
-      margin-top:35px;
-    }
-
-    .primary-btn{
-      background:var(--blue);
-      color:#fff;
-      padding:16px 25px;
-      border-radius:12px;
-      font-weight:800;
-      font-size:12px;
-      box-shadow:0 15px 35px rgba(39,100,255,.22);
-      transition:.3s;
-    }
-
-    .primary-btn:hover{
-      transform:translateY(-4px);
-      box-shadow:0 20px 40px rgba(39,100,255,.3);
-    }
-
-    .secondary-btn{
-      padding:16px 20px;
-      color:#555;
-      font-size:12px;
-      font-weight:700;
-    }
-
-    /* HERO DASHBOARD */
-
-    .hero-dashboard{
-      position:relative;
-      min-height:530px;
-    }
-
-    .dashboard-card{
-      position:absolute;
-      right:0;
-      top:20px;
-      width:430px;
-      background:rgba(255,255,255,.8);
-      border:1px solid rgba(255,255,255,.9);
-      border-radius:30px;
-      padding:25px;
-      box-shadow:0 30px 80px rgba(28,46,90,.15);
-      backdrop-filter:blur(20px);
-      transform:rotate(3deg);
-      transition:.2s;
-    }
-
-    .dashboard-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .dashboard-top small{
-      color:#8a909b;
-      font-size:10px;
-    }
-
-    .dashboard-top strong{
-      display:block;
-      font-size:17px;
-      margin-top:4px;
-    }
-
-    .avatar{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      background:var(--blue-light);
-      color:var(--blue);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-    }
-
-    .activity{
-      margin-top:25px;
-      background:#f5f7fb;
-      padding:20px;
-      border-radius:20px;
-    }
-
-    .activity-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:25px;
-    }
-
-    .activity-head strong{
-      font-size:14px;
-    }
-
-    .activity-head span{
-      color:var(--blue);
-      font-size:11px;
-      font-weight:700;
-    }
-
-    .chart{
-      height:130px;
-      display:flex;
-      align-items:end;
-      gap:9px;
-    }
-
-    .chart-bar{
-      flex:1;
-      height:var(--height);
-      border-radius:8px 8px 3px 3px;
-      background:linear-gradient(to top,#2764ff,#7da0ff);
-      animation:grow 1.5s ease forwards;
-      transform-origin:bottom;
-    }
-
-    @keyframes grow{
-      from{transform:scaleY(0);}
-      to{transform:scaleY(1);}
-    }
-
-    .chart-days{
-      display:flex;
-      gap:9px;
-      margin-top:10px;
-      color:#9ca2ad;
-      font-size:9px;
-      text-align:center;
-    }
-
-    .chart-days span{
-      flex:1;
-    }
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    .mini-card{
-      background:#fff;
-      border:1px solid var(--border);
-      padding:18px;
-      border-radius:18px;
-    }
-
-    .mini-card small{
-      color:#9298a3;
-      font-size:9px;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .mini-card strong{
-      display:block;
-      font-family:"Space Grotesk";
-      font-size:27px;
-      margin-top:7px;
-    }
-
-    .floating-stat{
-      position:absolute;
-      left:0;
-      top:110px;
-      background:#111318;
-      color:#fff;
-      padding:20px;
-      border-radius:20px;
-      box-shadow:0 20px 45px rgba(0,0,0,.18);
-      z-index:3;
-      animation:float 4s ease-in-out infinite;
-    }
-
-    .floating-stat small{
-      color:#999;
-      display:block;
-      font-size:9px;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .floating-stat strong{
-      font-size:30px;
-      display:block;
-      margin-top:5px;
-    }
-
-    .floating-stat span{
-      color:#70e49b;
-      font-size:10px;
-    }
-
-    @keyframes float{
-      0%,100%{transform:translateY(0);}
-      50%{transform:translateY(-15px);}
-    }
-
-    .floating-ring{
-      position:absolute;
-      width:180px;
-      height:180px;
-      border-radius:50%;
-      border:25px solid #e4eaff;
-      right:-30px;
-      bottom:10px;
-    }
-
-    .floating-ring:after{
-      content:"";
-      position:absolute;
-      inset:-25px;
-      border:25px solid transparent;
-      border-top-color:var(--blue);
-      border-radius:50%;
-      transform:rotate(40deg);
-    }
-
-    /* TRUST BAR */
-
-    .trust{
-      padding:30px 0;
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-      background:#fff;
-    }
-
-    .trust-inner{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:30px;
-    }
-
-    .trust p{
-      color:#9aa0aa;
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:2px;
-    }
-
-    .trust-items{
-      display:flex;
-      gap:45px;
-      font-family:"Space Grotesk";
-      font-weight:700;
-      color:#555a64;
-    }
-
-    /* SECTIONS */
-
-    section{
-      padding:110px 0;
-    }
-
-    .section-title{
-      max-width:650px;
-      margin-bottom:55px;
-    }
-
-    .section-title .tag{
-      margin-bottom:18px;
-    }
-
-    h2{
-      font-family:"Space Grotesk";
-      font-size:clamp(42px,6vw,70px);
-      line-height:.95;
-      letter-spacing:-4px;
-    }
-
-    .section-title p{
-      color:var(--gray);
-      line-height:1.7;
-      margin-top:18px;
-      max-width:550px;
-    }
-
-    /* SERVICES */
-
-    .services{
-      background:var(--light);
-    }
-
-    .service-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .service{
-      background:#fff;
-      padding:32px;
-      border-radius:24px;
-      border:1px solid var(--border);
-      transition:.4s;
-    }
-
-    .service:hover{
-      transform:translateY(-8px);
-      box-shadow:0 25px 60px rgba(30,50,100,.1);
-      border-color:#c9d5f7;
-    }
-
-    .service-number{
-      font-size:11px;
-      color:#a1a6b0;
-      font-weight:800;
-    }
-
-    .service-icon{
-      width:55px;
-      height:55px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--blue-light);
-      color:var(--blue);
-      border-radius:16px;
-      font-size:23px;
-      margin:35px 0 25px;
-    }
-
-    .service h3{
-      font-family:"Space Grotesk";
-      font-size:24px;
-    }
-
-    .service p{
-      color:#858b96;
-      line-height:1.7;
-      font-size:13px;
-      margin-top:10px;
-    }
-
-    /* WORKOUT */
-
-    .workout-grid{
-      display:grid;
-      grid-template-columns:.8fr 1.2fr;
-      gap:40px;
-      align-items:center;
-    }
-
-    .progress-card{
-      background:#111318;
-      color:#fff;
-      padding:40px;
-      border-radius:30px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .progress-card:before{
-      content:"";
-      position:absolute;
-      width:300px;
-      height:300px;
-      border-radius:50%;
-      background:var(--blue);
-      filter:blur(100px);
-      opacity:.25;
-      right:-100px;
-      top:-100px;
-    }
-
-    .progress-card small{
-      color:#8c929e;
-      text-transform:uppercase;
-      font-size:9px;
-      letter-spacing:2px;
-    }
-
-    .progress-card h3{
-      font-family:"Space Grotesk";
-      font-size:30px;
-      margin-top:8px;
-    }
-
-    .progress-ring{
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      margin:45px auto 30px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:conic-gradient(var(--blue) 0 78%,#272b34 78% 100%);
-      position:relative;
-    }
-
-    .progress-ring:after{
-      content:"";
-      position:absolute;
-      inset:17px;
-      background:#111318;
-      border-radius:50%;
-    }
-
-    .progress-number{
-      position:relative;
-      z-index:2;
-      text-align:center;
-    }
-
-    .progress-number strong{
-      display:block;
-      font-family:"Space Grotesk";
-      font-size:48px;
-    }
-
-    .progress-number span{
-      color:#8d939e;
-      font-size:10px;
-    }
-
-    .goal-list{
-      display:grid;
-      gap:15px;
-    }
-
-    .goal{
-      display:flex;
-      align-items:center;
-      gap:17px;
-      padding:22px;
-      border:1px solid var(--border);
-      border-radius:20px;
-      background:#fff;
-    }
-
-    .goal-icon{
-      width:45px;
-      height:45px;
-      border-radius:14px;
-      background:var(--blue-light);
-      color:var(--blue);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-    }
-
-    .goal-info{
-      flex:1;
-    }
-
-    .goal-info strong{
-      display:block;
-      font-size:14px;
-    }
-
-    .goal-info span{
-      display:block;
-      color:#9297a1;
-      font-size:11px;
-      margin-top:5px;
-    }
-
-    .goal-progress{
-      width:80px;
-      height:6px;
-      border-radius:20px;
-      background:#e9ebef;
-      overflow:hidden;
-    }
-
-    .goal-progress i{
-      display:block;
-      height:100%;
-      width:var(--progress);
-      background:var(--blue);
-      border-radius:20px;
-    }
-
-    /* MEMBERSHIP */
-
-    .plans{
-      background:var(--light);
-    }
-
-    .pricing{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-
-    .plan{
-      background:#fff;
-      padding:35px;
-      border-radius:28px;
-      border:1px solid var(--border);
-      position:relative;
-    }
-
-    .plan.featured{
-      background:var(--blue);
-      color:#fff;
-      border-color:var(--blue);
-      transform:translateY(-10px);
-      box-shadow:0 25px 60px rgba(39,100,255,.25);
-    }
-
-    .popular{
-      position:absolute;
-      top:18px;
-      right:18px;
-      background:#fff;
-      color:var(--blue);
-      padding:7px 11px;
-      border-radius:20px;
-      font-size:8px;
-      font-weight:800;
-      text-transform:uppercase;
-    }
-
-    .plan h3{
-      font-family:"Space Grotesk";
-      font-size:24px;
-    }
-
-    .plan-description{
-      color:#8b919b;
-      font-size:12px;
-      margin-top:8px;
-    }
-
-    .featured .plan-description{
-      color:#d7e1ff;
-    }
-
-    .price{
-      font-family:"Space Grotesk";
-      font-size:55px;
-      font-weight:700;
-      margin:25px 0;
-    }
-
-    .price span{
-      font-family:"DM Sans";
-      font-size:11px;
-      color:#999;
-      font-weight:400;
-    }
-
-    .featured .price span{
-      color:#d5dfff;
-    }
-
-    .plan ul{
-      list-style:none;
-      border-top:1px solid var(--border);
-      padding-top:15px;
-    }
-
-    .featured ul{
-      border-color:rgba(255,255,255,.2);
-    }
-
-    .plan li{
-      padding:9px 0;
-      color:#727782;
-      font-size:12px;
-    }
-
-    .featured li{
-      color:#e0e7ff;
-    }
-
-    .plan li:before{
-      content:"✓";
-      color:var(--blue);
-      font-weight:900;
-      margin-right:9px;
-    }
-
-    .featured li:before{
-      color:#fff;
-    }
-
-    .plan-btn{
-      display:block;
-      text-align:center;
-      margin-top:25px;
-      padding:14px;
-      border-radius:12px;
-      background:#111318;
-      color:#fff;
-      font-size:11px;
-      font-weight:800;
-    }
-
-    .featured .plan-btn{
-      background:#fff;
-      color:var(--blue);
-    }
-
-    /* TRAINERS */
-
-    .trainer-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-
-    .trainer{
-      border-radius:25px;
-      overflow:hidden;
-      background:#f2f4f8;
-      border:1px solid var(--border);
-    }
-
-    .trainer-photo{
-      height:300px;
-      background:
-        radial-gradient(circle at 50% 30%,#cbd7f5,transparent 30%),
-        linear-gradient(145deg,#dfe5f0,#f7f8fa);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family:"Space Grotesk";
-      font-size:75px;
-      font-weight:700;
-      color:#b8c2d8;
-    }
-
-    .trainer-info{
-      padding:23px;
-      background:#fff;
-    }
-
-    .trainer-info h3{
-      font-family:"Space Grotesk";
-      font-size:20px;
-    }
-
-    .trainer-info p{
-      color:var(--blue);
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      margin-top:5px;
-    }
-
-    /* CTA */
-
-    .cta{
-      background:var(--black);
-      color:#fff;
-      border-radius:35px;
-      padding:75px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .cta:before{
-      content:"";
-      position:absolute;
-      width:450px;
-      height:450px;
-      right:-150px;
-      top:-200px;
-      border-radius:50%;
-      background:var(--blue);
-      filter:blur(120px);
-      opacity:.5;
-    }
-
-    .cta h2{
-      max-width:700px;
-      position:relative;
-    }
-
-    .cta h2 span{
-      color:#7194ff;
-    }
-
-    .cta p{
-      color:#9297a2;
-      max-width:520px;
-      line-height:1.7;
-      margin:20px 0 30px;
-      position:relative;
-    }
-
-    /* CONTACT */
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:50px;
-    }
-
-    .contact-info h2{
-      margin-bottom:20px;
-    }
-
-    .contact-info>p{
-      color:#858b96;
-      line-height:1.8;
-      max-width:470px;
-    }
-
-    .details{
-      margin-top:30px;
-    }
-
-    .detail{
-      display:flex;
-      align-items:center;
-      gap:15px;
-      padding:15px 0;
-      border-bottom:1px solid var(--border);
-    }
-
-    .detail-icon{
-      width:40px;
-      height:40px;
-      border-radius:12px;
-      background:var(--blue-light);
-      color:var(--blue);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .detail strong{
-      display:block;
-      font-size:12px;
-    }
-
-    .detail span{
-      color:#858b96;
-      font-size:11px;
-    }
-
-    form{
-      background:var(--light);
-      border:1px solid var(--border);
-      padding:30px;
-      border-radius:28px;
-    }
-
-    input,textarea{
-      width:100%;
-      border:1px solid var(--border);
-      background:#fff;
-      padding:16px;
-      border-radius:12px;
-      margin-bottom:12px;
-      outline:none;
-      font-family:inherit;
-      font-size:13px;
-    }
-
-    input:focus,textarea:focus{
-      border-color:var(--blue);
-      box-shadow:0 0 0 4px var(--blue-light);
-    }
-
-    textarea{
-      height:130px;
-      resize:none;
-    }
-
-    form button{
-      width:100%;
-      padding:16px;
-      border:0;
-      border-radius:12px;
-      background:var(--blue);
-      color:#fff;
-      font-weight:800;
-      cursor:pointer;
-    }
-
-    /* FOOTER */
-
-    footer{
-      padding:30px 0;
-      border-top:1px solid var(--border);
-      color:#8d929b;
-      font-size:11px;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-    }
-
-    /* REVEAL */
-
-    .reveal{
-      opacity:0;
-      transform:translateY(30px);
-      transition:1s ease;
-    }
-
-    .reveal.active{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:950px){
-
-      .nav-links{
-        display:none;
-      }
-
-      .hero-grid,
-      .workout-grid,
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-dashboard{
-        max-width:600px;
-        width:100%;
-        margin:auto;
-      }
-
-      .service-grid,
-      .pricing,
-      .trainer-grid{
-        grid-template-columns:1fr;
-      }
-
-      .plan.featured{
-        transform:none;
-      }
-
-      .trust-inner{
-        display:block;
-        text-align:center;
-      }
-
-      .trust-items{
-        justify-content:center;
-        margin-top:20px;
-        flex-wrap:wrap;
-      }
-    }
-
-    @media(max-width:600px){
-
-      .hero{
-        padding-top:125px;
-      }
-
-      h1{
-        font-size:65px;
-        letter-spacing:-4px;
-      }
-
-      .hero-actions{
-        flex-wrap:wrap;
-      }
-
-      .hero-dashboard{
-        min-height:430px;
-      }
-
-      .dashboard-card{
-        width:90%;
-        right:0;
-      }
-
-      .floating-stat{
-        left:-5px;
-        top:90px;
-      }
-
-      .floating-ring{
-        width:120px;
-        height:120px;
-        border-width:18px;
-        right:-10px;
-      }
-
-      .floating-ring:after{
-        inset:-18px;
-        border-width:18px;
-      }
-
-      .trust-items{
-        gap:20px;
-      }
-
-      section{
-        padding:80px 0;
-      }
-
-      h2{
-        letter-spacing:-2px;
-      }
-
-      .cta{
-        padding:45px 25px;
-        border-radius:25px;
-      }
-
-      .footer-inner{
-        display:block;
-      }
-
-      .footer-inner div:last-child{
-        margin-top:10px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond247</title>
+
+<style>
+:root{
+  --diamond-blue:#0789c8;
+  --diamond-blue-dark:#0875ad;
+  --diamond-navy:#293b50;
+  --diamond-border:#d6e2eb;
+  --diamond-page:#f1f4f7;
+  --diamond-text:#1c2935;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:var(--diamond-page);
+  color:var(--diamond-text);
+}
+
+.container{
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
+}
+
+.demo{
+  width:70%;
+  background:#111;
+  position:relative;
+}
+
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
+
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#fff,#eaf2f8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
+}
+
+.box{
+  width:100%;
+  background:#fff;
+  border:1px solid var(--diamond-border);
+  border-radius:8px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 8px 28px rgba(41,59,80,.12);
+}
+
+.badge{
+  display:inline-block;
+  background:var(--diamond-blue);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
+}
+
+h1{
+  font-size:34px;
+  color:var(--diamond-navy);
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#000;
+}
+
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
+}
+
+.feature{
+  background:linear-gradient(90deg,#f5f8fa,#e9f3f9);
+  border:1px solid var(--diamond-border);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
+}
+
+.feature span{
+  color:var(--diamond-blue-dark);
+}
+
+/* Signup Button */
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:var(--diamond-blue);
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid var(--diamond-blue-dark);
+  transition:.3s;
+}
+
+.signup-btn:hover{
+  background:var(--diamond-blue-dark);
+  transform:scale(1.03);
+}
+
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.website-row a{
+  text-decoration:none;
+}
+
+.website{
+  color:var(--diamond-blue-dark);
+}
+
+.whatsapp-small{
+  color:#168a45;
+}
+
+.cta{
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
+}
+
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
+}
+
+/* Floating Signup Button */
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:var(--diamond-blue);
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:900;
+  border:3px solid #fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(7,137,200,.35);
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.08);
+  background:var(--diamond-blue-dark);
+  box-shadow:0 12px 25px rgba(7,137,200,.45);
+}
+
+.trust{
+  margin-top:16px;
+  color:#ccc;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
+
+.bonus-popup{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+}
+
+.bonus-popup[hidden]{
+  display:none;
+}
+
+.bonus-dialog{
+  position:relative;
+  width:min(100%,420px);
+  padding:34px 24px 28px;
+  border:2px solid var(--diamond-blue);
+  border-radius:10px;
+  background:#fff;
+  text-align:center;
+  color:var(--diamond-text);
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+  animation:popup-enter .24s ease-out;
+}
+
+.bonus-close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:var(--diamond-navy);
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.bonus-dialog h2{
+  margin-bottom:10px;
+  color:var(--diamond-blue-dark);
+  font-size:30px;
+}
+
+.bonus-dialog p{
+  margin-bottom:22px;
+  color:#455462;
+  line-height:1.5;
+}
+
+.bonus-claim{
+  display:block;
+  padding:14px 18px;
+  border-radius:8px;
+  background:var(--diamond-blue);
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.bonus-claim:hover{
+  background:var(--diamond-blue-dark);
+}
+
+@keyframes popup-enter{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .bonus-dialog{animation:none}
+}
+
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
+  }
+
+  .demo,
+  .right{
+    width:100%;
+  }
+
+  iframe{
+    height:500px;
+  }
+
+  .right{
+    padding:20px;
+  }
+}
+
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
+
+  .sub{
+    font-size:16px;
+  }
+
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .signup-btn{
+    font-size:14px;
+    padding:8px 13px;
+  }
+
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
+
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
+}
+</style>
+
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="container nav-inner">
+<div class="bonus-popup" id="bonusPopup" role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+  <div class="bonus-dialog">
+    <button class="bonus-close" id="bonusClose" type="button" aria-label="Close bonus popup">&times;</button>
+    <h2 id="bonusTitle">Bonus Offer</h2>
+    <p>10% Deposit Bonus<br>15% Losing Bonus<br>3% Referral Bonus</p>
+    <a class="bonus-claim" href="https://diamond247.com/clk?src=fLABjgt7">Sign Up with Diamond247</a>
+  </div>
+</div>
 
-      <a href="#" class="logo">AERO<span>.</span></a>
+<div class="container">
 
-      <div class="nav-links">
-        <a href="#services">Programs</a>
-        <a href="#progress">Progress</a>
-        <a href="#membership">Membership</a>
-        <a href="#trainers">Coaches</a>
-      </div>
+  <div class="demo">
+    <a href="https://diamond247.com/clk?src=fLABjgt7" target="_blank" rel="noopener noreferrer" class="floating-signup">SIGN UP WITH DIAMOND247</a>
+    <iframe src="https://diamond247.com/clk?src=fLABjgt7"></iframe>
+  </div>
 
-      <a href="#contact" class="nav-button">Get Started</a>
+  <div class="right">
+    <div class="box">
 
-    </div>
-  </nav>
+  <div class="badge">DIAMOND247</div>
 
+  <h1>Get Your ID Now</h1>
 
-  <!-- HERO -->
-  <header class="hero">
+  <p class="sub">
+    Fast auto website service with easy deposit support.
+    New users can start quickly through WhatsApp.
+  </p>
 
-    <div class="container hero-grid">
+  <div class="features">
 
-      <div class="hero-content reveal">
-
-        <div class="tag">
-          <i></i>
-          Next Generation Fitness
-        </div>
-
-        <h1>
-          TRAIN
-          <span>SMARTER.</span>
-        </h1>
-
-        <p class="hero-description">
-          A modern fitness experience combining expert coaching,
-          intelligent tracking and powerful workouts to help you
-          become your strongest self.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#membership" class="primary-btn">
-            Start Training →
-          </a>
-
-          <a href="#services" class="secondary-btn">
-            Explore Programs
-          </a>
-        </div>
-
-      </div>
-
-
-      <div class="hero-dashboard reveal">
-
-        <div class="floating-stat">
-          <small>Today's Burn</small>
-          <strong>742</strong>
-          <span>+18% this week</span>
-        </div>
-
-        <div class="dashboard-card" id="dashboard">
-
-          <div class="dashboard-top">
-            <div>
-              <small>Welcome Back</small>
-              <strong>Your Activity</strong>
-            </div>
-
-            <div class="avatar">A</div>
-          </div>
-
-          <div class="activity">
-
-            <div class="activity-head">
-              <strong>Weekly Activity</strong>
-              <span>+24.8%</span>
-            </div>
-
-            <div class="chart">
-              <div class="chart-bar" style="--height:45%"></div>
-              <div class="chart-bar" style="--height:65%"></div>
-              <div class="chart-bar" style="--height:52%"></div>
-              <div class="chart-bar" style="--height:80%"></div>
-              <div class="chart-bar" style="--height:62%"></div>
-              <div class="chart-bar" style="--height:92%"></div>
-              <div class="chart-bar" style="--height:74%"></div>
-            </div>
-
-            <div class="chart-days">
-              <span>M</span>
-              <span>T</span>
-              <span>W</span>
-              <span>T</span>
-              <span>F</span>
-              <span>S</span>
-              <span>S</span>
-            </div>
-
-          </div>
-
-          <div class="mini-grid">
-
-            <div class="mini-card">
-              <small>Workouts</small>
-              <strong>18</strong>
-            </div>
-
-            <div class="mini-card">
-              <small>Calories</small>
-              <strong>8.4K</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="floating-ring"></div>
-
-      </div>
-
+    <div class="feature">
+      Minimum Deposit: <span>₹100 Only</span>
     </div>
 
-  </header>
+    <div class="feature">
+      Welcome Bonus: <span>10%</span>
+    </div>
 
+    <div class="feature">
+      Diamond247 Signup:
+      <a
+        class="signup-btn"
+        href="https://diamond247.com/clk?src=fLABjgt7"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Sign Up with Diamond247
+      </a>
+    </div>
 
-  <!-- TRUST -->
-  <div class="trust">
-
-    <div class="container trust-inner">
-
-      <p>Trusted by 10,000+ members</p>
-
-      <div class="trust-items">
-        <span>ATHLETE+</span>
-        <span>FITLAB</span>
-        <span>MOVE</span>
-        <span>CORE</span>
-      </div>
-
+    <div class="feature">
+      Quick Help:
+      <span>Deposit &amp; Withdrawal Support</span>
     </div>
 
   </div>
 
-
-  <!-- SERVICES -->
-  <section id="services" class="services">
-
-    <div class="container">
-
-      <div class="section-title reveal">
-
-        <div class="tag">
-          01 / Programs
-        </div>
-
-        <h2>Everything You Need To Move Better.</h2>
-
-        <p>
-          From strength to conditioning, every program is built
-          around progress, consistency and better movement.
-        </p>
-
-      </div>
-
-
-      <div class="service-grid">
-
-        <div class="service reveal">
-          <div class="service-number">01</div>
-
-          <div class="service-icon">↗</div>
-
-          <h3>Strength Lab</h3>
-
-          <p>
-            Progressive strength training designed to increase
-            power, muscle and overall performance.
-          </p>
-        </div>
-
-
-        <div class="service reveal">
-          <div class="service-number">02</div>
-
-          <div class="service-icon">◉</div>
-
-          <h3>HIIT Studio</h3>
-
-          <p>
-            Fast-paced workouts designed to challenge your
-            cardiovascular fitness and endurance.
-          </p>
-        </div>
-
-
-        <div class="service reveal">
-          <div class="service-number">03</div>
-
-          <div class="service-icon">△</div>
-
-          <h3>Mobility</h3>
-
-          <p>
-            Improve flexibility, stability and movement quality
-            with guided mobility sessions.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PROGRESS -->
-  <section id="progress">
-
-    <div class="container">
-
-      <div class="section-title reveal">
-
-        <div class="tag">
-          02 / Progress
-        </div>
-
-        <h2>Make Every Workout Count.</h2>
-
-        <p>
-          Your fitness journey becomes easier when you can
-          actually see your progress.
-        </p>
-
-      </div>
-
-
-      <div class="workout-grid">
-
-        <div class="progress-card reveal">
-
-          <small>Weekly Goal</small>
-
-          <h3>Performance Score</h3>
-
-          <div class="progress-ring">
-
-            <div class="progress-number">
-              <strong>78%</strong>
-              <span>COMPLETED</span>
-            </div>
-
-          </div>
-
-          <div style="text-align:center;color:#8d939e;font-size:11px;">
-            5 of 7 weekly sessions completed
-          </div>
-
-        </div>
-
-
-        <div class="goal-list">
-
-          <div class="goal reveal">
-
-            <div class="goal-icon">01</div>
-
-            <div class="goal-info">
-              <strong>Strength</strong>
-              <span>4 / 5 sessions</span>
-            </div>
-
-            <div class="goal-progress">
-              <i style="--progress:80%"></i>
-            </div>
-
-          </div>
-
-
-          <div class="goal reveal">
-
-            <div class="goal-icon">02</div>
-
-            <div class="goal-info">
-              <strong>Cardio</strong>
-              <span>3 / 4 sessions</span>
-            </div>
-
-            <div class="goal-progress">
-              <i style="--progress:75%"></i>
-            </div>
-
-          </div>
-
-
-          <div class="goal reveal">
-
-            <div class="goal-icon">03</div>
-
-            <div class="goal-info">
-              <strong>Mobility</strong>
-              <span>5 / 5 sessions</span>
-            </div>
-
-            <div class="goal-progress">
-              <i style="--progress:100%"></i>
-            </div>
-
-          </div>
-
-
-          <div class="goal reveal">
-
-            <div class="goal-icon">04</div>
-
-            <div class="goal-info">
-              <strong>Recovery</strong>
-              <span>6 / 7 days</span>
-            </div>
-
-            <div class="goal-progress">
-              <i style="--progress:86%"></i>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- MEMBERSHIP -->
-  <section id="membership" class="plans">
-
-    <div class="container">
-
-      <div class="section-title reveal">
-
-        <div class="tag">
-          03 / Membership
-        </div>
-
-        <h2>Choose Your Pace.</h2>
-
-        <p>
-          Flexible memberships for beginners, regular athletes
-          and people ready to go all in.
-        </p>
-
-      </div>
-
-
-      <div class="pricing">
-
-        <div class="plan reveal">
-
-          <h3>Starter</h3>
-
-          <p class="plan-description">
-            For building your routine.
-          </p>
-
-          <div class="price">
-            $29 <span>/ month</span>
-          </div>
-
-          <ul>
-            <li>Gym Access</li>
-            <li>Basic Equipment</li>
-            <li>Workout Library</li>
-            <li>Locker Access</li>
-          </ul>
-
-          <a href="#contact" class="plan-btn">
-            Get Started
-          </a>
-
-        </div>
-
-
-        <div class="plan featured reveal">
-
-          <div class="popular">Popular</div>
-
-          <h3>Performance</h3>
-
-          <p class="plan-description">
-            For serious progress.
-          </p>
-
-          <div class="price">
-            $59 <span>/ month</span>
-          </div>
-
-          <ul>
-            <li>Unlimited Gym Access</li>
-            <li>All Group Classes</li>
-            <li>Progress Tracking</li>
-            <li>Monthly Coach Review</li>
-          </ul>
-
-          <a href="#contact" class="plan-btn">
-            Choose Performance
-          </a>
-
-        </div>
-
-
-        <div class="plan reveal">
-
-          <h3>Elite</h3>
-
-          <p class="plan-description">
-            For maximum results.
-          </p>
-
-          <div class="price">
-            $99 <span>/ month</span>
-          </div>
-
-          <ul>
-            <li>Everything In Performance</li>
-            <li>Personal Training</li>
-            <li>Nutrition Coaching</li>
-            <li>Priority Booking</li>
-          </ul>
-
-          <a href="#contact" class="plan-btn">
-            Go Elite
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- TRAINERS -->
-  <section id="trainers">
-
-    <div class="container">
-
-      <div class="section-title reveal">
-
-        <div class="tag">
-          04 / Coaches
-        </div>
-
-        <h2>Meet Your Coaches.</h2>
-
-        <p>
-          Experienced coaches who care about your technique,
-          progress and long-term results.
-        </p>
-
-      </div>
-
-
-      <div class="trainer-grid">
-
-        <div class="trainer reveal">
-
-          <div class="trainer-photo">
-            JD
-          </div>
-
-          <div class="trainer-info">
-            <h3>Jordan Davis</h3>
-            <p>Strength Specialist</p>
-          </div>
-
-        </div>
-
-
-        <div class="trainer reveal">
-
-          <div class="trainer-photo">
-            MK
-          </div>
-
-          <div class="trainer-info">
-            <h3>Maya Khan</h3>
-            <p>Performance Coach</p>
-          </div>
-
-        </div>
-
-
-        <div class="trainer reveal">
-
-          <div class="trainer-photo">
-            RS
-          </div>
-
-          <div class="trainer-info">
-            <h3>Ryan Stone</h3>
-            <p>Mobility Coach</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CTA -->
-  <section>
-
-    <div class="container">
-
-      <div class="cta reveal">
-
-        <h2>
-          YOUR NEXT
-          <span>LEVEL</span>
-          STARTS NOW.
-        </h2>
-
-        <p>
-          One membership. Expert coaching. Smarter training.
-          Everything you need to build a stronger body and a
-          better routine.
-        </p>
-
-        <a href="#contact" class="primary-btn">
-          Book A Free Tour →
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CONTACT -->
-  <section id="contact">
-
-    <div class="container contact-grid">
-
-      <div class="contact-info reveal">
-
-        <div class="tag">
-          05 / Contact
-        </div>
-
-        <h2>Let's Start.</h2>
-
-        <p>
-          Come see the space, meet the team and find the
-          membership that fits your goals.
-        </p>
-
-
-        <div class="details">
-
-          <div class="detail">
-
-            <div class="detail-icon">⌖</div>
-
-            <div>
-              <strong>Location</strong>
-              <span>88 Fitness Avenue, Downtown</span>
-            </div>
-
-          </div>
-
-
-          <div class="detail">
-
-            <div class="detail-icon">✆</div>
-
-            <div>
-              <strong>Phone</strong>
-              <span>+1 555 203 8899</span>
-            </div>
-
-          </div>
-
-
-          <div class="detail">
-
-            <div class="detail-icon">@</div>
-
-            <div>
-              <strong>Email</strong>
-              <span>hello@aerofitness.com</span>
-            </div>
-
-          </div>
-
-
-          <div class="detail">
-
-            <div class="detail-icon">◷</div>
-
-            <div>
-              <strong>Opening Hours</strong>
-              <span>Open 24 Hours</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <form id="contactForm" class="reveal">
-
-        <input
-          type="text"
-          placeholder="Full Name"
-          required
-        >
-
-        <input
-          type="email"
-          placeholder="Email Address"
-          required
-        >
-
-        <input
-          type="tel"
-          placeholder="Phone Number"
-        >
-
-        <textarea
-          placeholder="What is your fitness goal?"
-        ></textarea>
-
-        <button type="submit">
-          Request Free Tour →
-        </button>
-
-      </form>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-
-    <div class="container footer-inner">
-
-      <div>
-        © 2026 AERO FITNESS
-      </div>
-
-      <div>
-        MOVE BETTER. LIVE STRONGER.
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <script>
-
-    /* DASHBOARD PARALLAX */
-
-    const dashboard =
-      document.getElementById("dashboard");
-
-    document.addEventListener("mousemove", function(e){
-
-      if(window.innerWidth < 900) return;
-
-      const x =
-        (window.innerWidth / 2 - e.clientX) / 60;
-
-      const y =
-        (window.innerHeight / 2 - e.clientY) / 60;
-
-      dashboard.style.transform =
-        `rotate(3deg) rotateY(${x}deg) rotateX(${y}deg)`;
-
-    });
-
-
-    /* SCROLL REVEAL */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const observer =
-      new IntersectionObserver((entries) => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add("active");
-
-          }
-
-        });
-
-      }, {
-        threshold:.12
-      });
-
-
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
-
-
-    /* CONTACT FORM */
-
-    document
-      .getElementById("contactForm")
-      .addEventListener("submit", function(e){
-
-        e.preventDefault();
-
-        alert(
-          "Thanks! Your AERO fitness tour request has been received."
-        );
-
-        this.reset();
-
-      });
-
-  </script>
+  <div class="website-row">
+
+    <a
+      class="website"
+      href="https://diamond247.com/clk?src=fLABjgt7"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 https://diamond247.com/clk?src=fLABjgt7
+    </a>
+
+    <a
+      class="whatsapp-small"
+      href="https://wa.me/+447933838366"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 WhatsApp
+    </a>
+
+  </div>
+
+  <a
+    class="cta"
+    href="https://wa.me/+447933838366?text=Hello%20I%20want%20new%20manual%20ID"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 WhatsApp Now
+  </a>
+
+  <p class="trust">
+    ✅ Trusted Manual Support<br>
+    ✅ Simple Process<br>
+    ✅ Fast Response
+  </p>
+
+  <div class="footer">
+    18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+<script>
+const bonusPopup = document.getElementById('bonusPopup');
+const bonusClose = document.getElementById('bonusClose');
+
+function closeBonusPopup(){
+  bonusPopup.hidden = true;
+}
+
+bonusClose.addEventListener('click', closeBonusPopup);
+bonusPopup.addEventListener('click', (event) => {
+  if(event.target === bonusPopup) closeBonusPopup();
+});
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeBonusPopup();
+});
+</script>
 
 </body>
 </html>
-```
